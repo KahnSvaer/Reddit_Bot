@@ -67,5 +67,8 @@ def create_posts(subreddit:str = SUBREDDIT, ):
     )
 
 
-comment_on_top_posts()
-# create_posts()
+def create_engagement():
+    comment_on_top_posts()
+    create_posts()
+
+Scheduler.start_scheduler(create_engagement)

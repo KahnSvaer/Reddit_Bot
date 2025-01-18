@@ -10,7 +10,7 @@ class Scheduler:
     @staticmethod
     def start_scheduler(func):
         """This method sets up and starts the scheduler to run the job at specific times."""
-        schedule.every(10).seconds.do(func) # Runs the job daily at 9 AM
+        schedule.every().day.at("00:00").do(func) # Talk at 12:00 AM
 
         print(f"Scheduler started. Jobs will run at: {datetime.now()}")
 
