@@ -52,14 +52,14 @@ class RedditService:
     def get_top_posts(self, subreddit_name: str, limit: int = 5, time_filter:str = "day"):
         """Fetches the top posts from a specified subreddit."""
         subreddit = self.reddit_handle.subreddit(subreddit_name)
-        return subreddit.top(limit=limit, time_filter=time_filter)
+        posts = subreddit.hot(limit=limit)
+        return posts
 
 
     def comment_on_post(self, post_id: str, comment_text: str):
         """Comments on a specific post by its ID."""
         submission = self.reddit_handle.submission(id=post_id)
         submission.reply(comment_text)
-        print(f"Commented on post: {post_id}")
 
 
     def create_post(self, subreddit_name: str, title: str, content: str, post_type: str = "text"):
@@ -93,16 +93,15 @@ if __name__ == "__main__":
         login_method=login_method
     )
 
-    # reddit_service.create_post(
-    #     subreddit_name="ForRedditBotTesting",
-    #     title="My First Bot Post",
-    #     content="Hello, Reddit! This is a post made using my Python bot.",
-    #     post_type="text"
-    # )
+    reddit_service.create_post(
+        subreddit_name="ForRedditBotTesting",
+        title="My First Bot Post",
+        content="Hello, Reddit! This is a post made using my Python bot.",
+        post_type="text"
+    )
 
     posts = reddit_service.get_top_posts(
         subreddit_name='ForRedditBotTesting',
     )
-
     for post in posts:
         reddit_service.comment_on_post(post_id = post.id, comment_text="Great post!")
