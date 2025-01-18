@@ -1,0 +1,49 @@
+# Python bytecode files
+*.pyc
+*.pyo
+__pycache__/
+
+# Virtual environments
+venv/
+.env/
+
+# IDE and editor files
+.vscode/
+.idea/
+
+# Distribution/Packaging
+.tox/
+.nox/
+.coverage
+.hypothesis/
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Pytest
+.pytest_cache/
+
+# Test directories and files
+tests/__pycache__/
+*.test
+*.spec
+
+# Build directories
+build/
+dist/
+
+# Docker files
+.docker/
+
+# Local configuration files
+*.env
+
+# Git-specific files
+.git/
+
+# macOS files (if on macOS)
+.DS_Store
+
+# Windows files (if on Windows)
+Thumbs.db
+
