@@ -76,7 +76,10 @@ You can configure the bot to post and comment at specific times by modifying the
 3. **Scheduling**:
    - The bot uses the `schedule` library to run tasks automatically at user-defined times. You can configure the bot to post and comment on a schedule. For example, to run the bot daily at 12:00 PM:
 
- 
+ ![Post and Reply by bot](https://github.com/user-attachments/assets/2115ccaa-c427-44a5-ab41-419d849218d0)
+ ![Post direct generated and Reply by bot](https://github.com/user-attachments/assets/87e454d4-b204-4d86-9fde-b9426f91ebb6)
+
+
 ### Logging
 
 All actions performed by the bot, including successful posts, comments, and errors, will be logged in the `bot_running.log` file. This log file helps track bot activity and troubleshoot any issues that arise.
