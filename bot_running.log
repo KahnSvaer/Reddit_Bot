@@ -1,0 +1,12 @@
+2025-01-19 23:26:27,927 - INFO - Initializing RedditService with OAuth2 (redirect URI).
+2025-01-19 23:26:33,634 - INFO - Authentication successful. Refresh token obtained.
+2025-01-19 23:26:34,297 - INFO - Post created in r/ForRedditBotTesting with title: My First Bot Post
+2025-01-19 23:26:34,297 - INFO - Fetched top 5 hot posts from r/ForRedditBotTesting.
+2025-01-19 23:26:35,240 - INFO - Commented on post titled: My First Bot Post
+2025-01-19 23:26:35,794 - INFO - Commented on post titled: My First Bot Post
+2025-01-19 23:26:36,327 - INFO - Commented on post titled: The Agony of Tech Support: A Soul-Crushing, Mind-Numbing, Existential Crisis-Inducing Experience
+2025-01-19 23:28:30,776 - INFO - Initializing RedditService with OAuth2 (redirect URI).
+2025-01-19 23:28:35,194 - INFO - Authentication successful. Refresh token obtained.
+2025-01-19 23:29:00,371 - INFO - Fetched top 5 hot posts from r/ForRedditBotTesting.
+2025-01-19 23:29:02,103 - INFO - Commented on post titled: My First Bot Post
+2025-01-19 23:29:04,346 - INFO - Post created in r/ForRedditBotTesting with title: # The Agony and the Laundry: A Tale of Socks, Sanity, and the Search for a Matching Pair

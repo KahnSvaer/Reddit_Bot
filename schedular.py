@@ -1,18 +1,33 @@
 import schedule
 import time
-from datetime import datetime
 
 
 class Scheduler:
     """
-    A schedular clas to be able to easily create schedulars to do some functions at intervals
+    A scheduler class to create daily jobs at specified times.
     """
     @staticmethod
-    def start_scheduler(func):
-        """This method sets up and starts the scheduler to run the job at specific times."""
-        schedule.every().day.at("00:00").do(func) # Talk at 12:00 AM
+    def start_daily_scheduler(func, time_str: str):
+        """
+               Sets up and starts the scheduler to run the job at specific times.
 
-        print(f"Scheduler started. Jobs will run at: {datetime.now()}")
+               Args:
+                   func (callable): The function to be scheduled.
+                   time_str (str): The time to run the job in HH:MM format (24-hour format).
+
+               Raises:
+                   ValueError: If the time format is invalid.
+        """
+        if len(time_str) == 1:
+            time_str = f"0{time_str}:00"
+        elif time_str == "12":
+            time_str = "12:00"
+        elif len(time_str) == 5:
+            time_str = time_str
+        else:
+            print("Invalid time format provided. Scheduler will not start.")
+            return
+        schedule.every().day.at(time_str).do(func)
 
         while True:
             schedule.run_pending()
@@ -23,5 +38,5 @@ if __name__ == "__main__":
     def check_Schedular():
         print(time.time())
 
-    Scheduler.start_scheduler(check_Schedular)
+    Scheduler.start_daily_scheduler(check_Schedular, "22:31")
 

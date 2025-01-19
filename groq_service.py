@@ -8,9 +8,21 @@ load_dotenv()
 
 class GroqAPI:
     """
-    Groq class used to interact with Groq API
+        A class to interact with the Groq API for generating AI-driven chat responses.
+
+        Attributes:
+            api_key (str): The API key used for authentication with the Groq API.
+            base_url (str): The endpoint for the Groq API.
+            headers (dict): The HTTP headers used for API requests.
     """
+
     def __init__(self, api_key: str):
+        """
+            Initializes the GroqAPI class with the provided API key.
+
+            Args:
+                api_key (str): The API key required for authenticating API requests.
+        """
         self.api_key = api_key
         self.base_url = "https://api.groq.com/openai/v1/chat/completions"
         self.headers = {
@@ -19,13 +31,21 @@ class GroqAPI:
         }
 
     def _send_request(self, data: dict):
-        """Helper method to send POST requests to the Groq API."""
+        """
+        A helper method to send POST requests to the Groq API.
+
+        Args:
+            data (dict): The payload to send in the POST request.
+
+        Returns:
+            dict: The JSON response from the Groq API if the request is successful.
+            None: If the request fails or the response contains an error.
+        """
         try:
             response = requests.post(self.base_url, headers=self.headers, data=json.dumps(data))
 
-            # Check for a successful response
             if response.status_code == 200:
-                return response.json()  # Parse and return the JSON response
+                return response.json()
             else:
                 print(f"Error: {response.status_code} - {response.text}")
                 return None
@@ -34,8 +54,17 @@ class GroqAPI:
             return None
 
     def generate_chat_response(self, prompt: str, model: str = "llama-3.3-70b-versatile"):
-        """Send a message to Groq and get the model's response."""
-        # Prepare the request data based on the cURL example
+        """
+                Sends a message to the Groq API and retrieves the model's response.
+
+                Args:
+                    prompt (str): The input prompt or query for the AI model.
+                    model (str, optional): The model to use for generating responses. Defaults to "llama-3.3-70b-versatile".
+
+                Returns:
+                    str: The content of the response from the Groq API if successful.
+                    str: An error message if the response fails.
+        """
         data = {
             "messages": [{"role": "user", "content": prompt}],
             "model": model
@@ -47,10 +76,8 @@ class GroqAPI:
         return "Failed to get a response."
 
 
-# Example usage
 if __name__ == "__main__":
-    # Load the API key from environment variables or a .env file
-    api_key = os.getenv("GROQ_API_KEY")  # Ensure you have this set in your .env
+    api_key = os.getenv("GROQ_API_KEY")
 
     if api_key is None:
         print("Error: Please set the GROQ_API_KEY environment variable.")
@@ -58,6 +85,5 @@ if __name__ == "__main__":
         groq_api = GroqAPI(api_key)
         prompt = "Tell me a joke please"
 
-        # Fetch generated content based on the prompt
         generated_content = groq_api.generate_chat_response(prompt)
         print("Generated Content:", generated_content)

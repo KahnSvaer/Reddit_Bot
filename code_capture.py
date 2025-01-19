@@ -1,13 +1,11 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import threading
-import logging
 
 __all__ = ["get_authorization_code"]
-logging.basicConfig(level=logging.ERROR)
 
 class CodeHandler(BaseHTTPRequestHandler):
     """
-    A class that is basically used to talk with
+    A handler class (private) to capture the authorization code from the redirect URL during an OAuth2 flow.
     """
     authorization_code = None
 
@@ -27,6 +25,14 @@ class CodeHandler(BaseHTTPRequestHandler):
             self.wfile.write(b"Error: No code received.")
 
 def get_authorization_code(port=8080):
+    """
+    Starts a local HTTP server to capture the authorization code
+    Args:
+        port (int): The port number on which the HTTP server should listen. Default is 8080.
+
+    Returns:
+        str: The captured authorization code.
+    """
     server = HTTPServer(("localhost", port), CodeHandler)
     thread = threading.Thread(target=server.serve_forever)
     thread.daemon = True
